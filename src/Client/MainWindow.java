@@ -53,7 +53,7 @@ public class MainWindow {
 
 		frame.setLayout(new BorderLayout());
 		
-		JLabel label = new JLabel("imageTitle");
+		JLabel label = new JLabel();
 		frame.add(label, BorderLayout.NORTH);
 
 		JList<String[]> listaEsquerda = new JList<>();
@@ -93,7 +93,7 @@ public class MainWindow {
 		panelText.add(pathSubImg);
 		
 		JButton btnFolder = new JButton("Pasta");
-		JButton btnSubImg = new JButton("Logo");
+		JButton btnSubImg = new JButton("Imagem");
 		panelButtons.add(btnFolder);
 		panelButtons.add(btnSubImg);
 	
@@ -102,13 +102,13 @@ public class MainWindow {
 		
 		
 		File[] files;
-		String path = "C:\\Temp";
+		String path = "./images";
 		ImageIcon img;
 		int pos = 0;
 		
 		files = new File(path).listFiles(new FileFilter() {
 		     public boolean accept(File f) { 
-		    	 return f.getName().endsWith("jpg");
+		    	 return f.getName().endsWith("png");
 		     }
 		});
 		

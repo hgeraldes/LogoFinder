@@ -97,7 +97,7 @@ public class MainWindow {
 		JButton btnSubImg = new JButton("Logo");
 		panelButtons.add(btnFolder);
 		panelButtons.add(btnSubImg);
-	
+	 
 
 		btnFolder.addActionListener(new ActionListener() {
 			@Override

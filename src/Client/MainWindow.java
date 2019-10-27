@@ -13,6 +13,7 @@ import java.io.FileFilter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -91,15 +92,34 @@ public class MainWindow {
 		JTextField pathSubImg = new JTextField();
 		panelText.add(pathFolder);
 		panelText.add(pathSubImg);
-		
+		 
 		JButton btnFolder = new JButton("Pasta");
 		JButton btnSubImg = new JButton("Imagem");
 		panelButtons.add(btnFolder);
 		panelButtons.add(btnSubImg);
-	
+	 
 
-
-		
+		btnFolder.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser path = new JFileChooser(".");
+				path.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				if(path.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+					pathFolder.setText(path.getSelectedFile().getAbsolutePath());
+				}
+			}
+		});
+		btnSubImg.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser path = new JFileChooser(pathFolder.getText());
+				path.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				
+				if(path.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+					pathSubImg.setText(path.getSelectedFile().getName());
+				}
+			}
+		});
 		
 		File[] files;
 		String path = "./images";

@@ -92,7 +92,7 @@ public class MainWindow {
 		JTextField pathSubImg = new JTextField();
 		panelText.add(pathFolder);
 		panelText.add(pathSubImg);
-		
+		 
 		JButton btnFolder = new JButton("Pasta");
 		JButton btnSubImg = new JButton("Logo");
 		panelButtons.add(btnFolder);

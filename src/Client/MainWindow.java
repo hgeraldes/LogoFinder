@@ -131,6 +131,7 @@ public class MainWindow {
 		    	 return f.getName().endsWith("png");
 		     }
 		});
+		//Teste commit
 		
 		img = new ImageIcon(files[pos].getPath());
 		labelImg.setIcon(img);

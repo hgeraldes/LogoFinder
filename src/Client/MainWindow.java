@@ -58,11 +58,11 @@ public class MainWindow {
 		frame.add(label, BorderLayout.NORTH);
 
 		JList<String[]> listWest = new JList<>();
-		listWest.setPreferredSize(new Dimension(200,100));
+		listWest.setPreferredSize(new Dimension(150,0));
 		frame.add(listWest, BorderLayout.WEST);
 		
 		JList<String[]> listEast = new JList<>();
-		listEast.setPreferredSize(new Dimension(200,100));
+		listEast.setPreferredSize(new Dimension(150,0));
 		frame.add(listEast, BorderLayout.EAST);
 		
 		JLabel labelImg = new JLabel("");
@@ -90,6 +90,7 @@ public class MainWindow {
 //		listWest.setPreferredSize(new Dimension(200,100));
 
 		JPanel panelButtons = new JPanel(new GridLayout(2,1));
+		panelButtons.setPreferredSize(new Dimension(150,0));
 		panelSouth.add(panelButtons, BorderLayout.EAST);
 
 		JTextField jtfPathFolder = new JTextField();

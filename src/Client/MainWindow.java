@@ -27,7 +27,7 @@ public class MainWindow {
 	private JFrame frame;
 
 	public MainWindow(String title) {
-		super();
+//		super();
 		this.title = title;
 		Initialize();
 		AddContent();
@@ -57,17 +57,17 @@ public class MainWindow {
 		JLabel label = new JLabel();
 		frame.add(label, BorderLayout.NORTH);
 
-		JList<String[]> listaEsquerda = new JList<>();
-		listaEsquerda.setPreferredSize(new Dimension(200,100));
-		frame.add(listaEsquerda, BorderLayout.WEST);
+		JList<String[]> listWest = new JList<>();
+		listWest.setPreferredSize(new Dimension(200,100));
+		frame.add(listWest, BorderLayout.WEST);
 		
-		JList<String[]> listaDireita = new JList<>();
-		listaDireita.setPreferredSize(new Dimension(200,100));
-		frame.add(listaDireita, BorderLayout.EAST);
+		JList<String[]> listEast = new JList<>();
+		listEast.setPreferredSize(new Dimension(200,100));
+		frame.add(listEast, BorderLayout.EAST);
 		
 		JLabel labelImg = new JLabel("");
-		JScrollPane pane = new JScrollPane(labelImg);
-		frame.add(pane, BorderLayout.CENTER);
+		JScrollPane scrollPane = new JScrollPane(labelImg);
+		frame.add(scrollPane, BorderLayout.CENTER);
 		
 		JPanel panelSouth = new JPanel();
 		panelSouth.setBackground(Color.lightGray);
@@ -80,43 +80,47 @@ public class MainWindow {
 		// P2 terá um gridlayout
 		
 		panelSouth.setLayout(new BorderLayout());
-		JButton procurar = new JButton("Procurar");
-		panelSouth.add(procurar, BorderLayout.SOUTH);
+		JButton btnProcurar = new JButton("Procurar");
+		panelSouth.add(btnProcurar, BorderLayout.SOUTH);
+
+		JPanel panelPaths = new JPanel(new GridLayout(2,1));
+		panelSouth.add(panelPaths, BorderLayout.CENTER);
 		
-		JPanel panelText = new JPanel(new GridLayout(2,1));
-		panelSouth.add(panelText, BorderLayout.CENTER);
+//		listWest.setPreferredSize(new Dimension(200,100));
+//		listWest.setPreferredSize(new Dimension(200,100));
+
 		JPanel panelButtons = new JPanel(new GridLayout(2,1));
 		panelSouth.add(panelButtons, BorderLayout.EAST);
-		
-		JTextField pathFolder = new JTextField();
-		JTextField pathSubImg = new JTextField();
-		panelText.add(pathFolder);
-		panelText.add(pathSubImg);
-		 
-		JButton btnFolder = new JButton("Pasta");
-		JButton btnSubImg = new JButton("Imagem");
-		panelButtons.add(btnFolder);
-		panelButtons.add(btnSubImg);
-	 
 
-		btnFolder.addActionListener(new ActionListener() {
+		JTextField jtfPathFolder = new JTextField();
+		JTextField jtfPathSubImage = new JTextField();
+		panelPaths.add(jtfPathFolder);
+		panelPaths.add(jtfPathSubImage);
+
+		JButton buttonPasta = new JButton("Pasta");
+		JButton buttonSubimagem = new JButton("Subimagem");
+		panelButtons.add(buttonPasta);
+		panelButtons.add(buttonSubimagem);
+
+		buttonPasta.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser path = new JFileChooser(".");
 				path.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				if(path.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-					pathFolder.setText(path.getSelectedFile().getAbsolutePath());
+					jtfPathFolder.setText(path.getSelectedFile().getAbsolutePath());
 				}
 			}
 		});
-		btnSubImg.addActionListener(new ActionListener() {
+
+		buttonSubimagem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser path = new JFileChooser(pathFolder.getText());
+				JFileChooser path = new JFileChooser(jtfPathFolder.getText());
 				path.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				
 				if(path.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-					pathSubImg.setText(path.getSelectedFile().getName());
+					jtfPathSubImage.setText(path.getSelectedFile().getName());
 				}
 			}
 		});

@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileFilter;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -86,9 +87,6 @@ public class MainWindow {
 		JPanel panelPaths = new JPanel(new GridLayout(2,1));
 		panelSouth.add(panelPaths, BorderLayout.CENTER);
 		
-//		listWest.setPreferredSize(new Dimension(200,100));
-//		listWest.setPreferredSize(new Dimension(200,100));
-
 		JPanel panelButtons = new JPanel(new GridLayout(2,1));
 		panelButtons.setPreferredSize(new Dimension(150,0));
 		panelSouth.add(panelButtons, BorderLayout.EAST);

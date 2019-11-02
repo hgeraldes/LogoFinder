@@ -103,7 +103,6 @@ public class MainWindow {
 		panelButtons.add(buttonPasta);
 		panelButtons.add(buttonSubimagem);
 
-
 		buttonPasta.addActionListener(new ActionFolder(jtfPathFolder));
 				
 		buttonSubimagem.addActionListener(new ActionFile(jtfPathSubImage, jtfPathFolder));

@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class MainWindow {
+	private JButton buttonPasta = new JButton("Pasta");
 	private String title;
 	private JFrame frame;
 
@@ -86,9 +87,6 @@ public class MainWindow {
 		JPanel panelPaths = new JPanel(new GridLayout(2,1));
 		panelSouth.add(panelPaths, BorderLayout.CENTER);
 		
-//		listWest.setPreferredSize(new Dimension(200,100));
-//		listWest.setPreferredSize(new Dimension(200,100));
-
 		JPanel panelButtons = new JPanel(new GridLayout(2,1));
 		panelButtons.setPreferredSize(new Dimension(150,0));
 		panelSouth.add(panelButtons, BorderLayout.EAST);
@@ -98,9 +96,10 @@ public class MainWindow {
 		panelPaths.add(jtfPathFolder);
 		panelPaths.add(jtfPathSubImage);
 
-		JButton buttonPasta = new JButton("Pasta");
+
 		JButton buttonSubimagem = new JButton("Subimagem");
 		panelButtons.add(buttonPasta);
+		
 		panelButtons.add(buttonSubimagem);
 
 		buttonPasta.addActionListener(new ActionListener() {

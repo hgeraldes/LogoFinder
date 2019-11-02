@@ -3,8 +3,6 @@ package Client;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,11 +21,12 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class MainWindow {
+	JTextField jtfPathFolder;
 	private String title;
 	private JFrame frame;
 
 	public MainWindow(String title) {
-//		super();
+		super();
 		this.title = title;
 		Initialize();
 		AddContent();
@@ -46,6 +45,7 @@ public class MainWindow {
 	
 	private void Initialize() {
 		frame = new JFrame(this.title);
+		jtfPathFolder = new JTextField();
 		// para que o botao de fechar a janela termine a aplicacao
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
@@ -93,7 +93,7 @@ public class MainWindow {
 		panelButtons.setPreferredSize(new Dimension(150,0));
 		panelSouth.add(panelButtons, BorderLayout.EAST);
 
-		JTextField jtfPathFolder = new JTextField();
+		
 		JTextField jtfPathSubImage = new JTextField();
 		panelPaths.add(jtfPathFolder);
 		panelPaths.add(jtfPathSubImage);
@@ -103,28 +103,10 @@ public class MainWindow {
 		panelButtons.add(buttonPasta);
 		panelButtons.add(buttonSubimagem);
 
-		buttonPasta.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser path = new JFileChooser(".");
-				path.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-				if(path.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-					jtfPathFolder.setText(path.getSelectedFile().getAbsolutePath());
-				}
-			}
-		});
 
-		buttonSubimagem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser path = new JFileChooser(jtfPathFolder.getText());
-				path.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		buttonPasta.addActionListener(new ActionFolder(jtfPathFolder));
 				
-				if(path.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-					jtfPathSubImage.setText(path.getSelectedFile().getName());
-				}
-			}
-		});
+		buttonSubimagem.addActionListener(new ActionFile(jtfPathSubImage, jtfPathFolder));
 		
 		File[] files;
 		String path = "./images";
